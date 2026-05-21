@@ -57,6 +57,24 @@ function formatTime(s: number) {
   return `${h}:${m}:${sec}`;
 }
 
+function DocumentIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-6 w-6" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 3H7.5A2.25 2.25 0 0 0 5.25 5.25v13.5A2.25 2.25 0 0 0 7.5 21h9a2.25 2.25 0 0 0 2.25-2.25V8.25L14.25 3Z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 3v5.25h4.5" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 12h7.5m-7.5 3h5.25" />
+    </svg>
+  );
+}
+
+function XMarkIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+    </svg>
+  );
+}
+
 export default function Landing() {
   const [timeLeft, setTimeLeft] = useState(offerDuration);
 
@@ -174,7 +192,9 @@ export default function Landing() {
               whileHover={{ y: -4 }}
               className="rounded-2xl border border-white/15 bg-gradient-to-br from-white/10 to-white/5 p-5 shadow-glow backdrop-blur-lg"
             >
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/20 text-indigo-100">📄</div>
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/20 text-indigo-100">
+                <DocumentIcon />
+              </div>
               <p className="text-slate-100">{doc}</p>
             </motion.article>
           ))}
@@ -211,7 +231,9 @@ export default function Landing() {
           <ul className="mt-6 space-y-3 text-rose-50/90">
             {unsupportedCases.map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <span className="mt-1 text-rose-300">✕</span>
+                <span className="mt-1 text-rose-300">
+                  <XMarkIcon />
+                </span>
                 <span>{item}</span>
               </li>
             ))}
